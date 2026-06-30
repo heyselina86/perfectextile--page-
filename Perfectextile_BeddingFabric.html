@@ -273,8 +273,8 @@
       <h1>Microfiber Bedding Fabric<br>Manufacturer <span class="accent">for B2B Buyers</span></h1>
       <p class="hero-sub">Perfectextile is a bedding fabric manufacturer specializing in polyester microfiber bedding fabric for B2B buyers. We supply dyed, printed, peach skin, embossed, jacquard, ultrasonic and quilted fabric to home textile manufacturers, fabric importers, wholesalers and bedding brands worldwide. Stable bulk production, custom specifications and factory-direct pricing since 2004.</p>
       <div class="cta-row">
-        <a class="btn btn-primary">Request Fabric Sample</a>
-        <a class="btn btn-secondary">Get Fabric Quotation</a>
+        <a class="btn btn-primary" data-open-inquiry href="#">Request Fabric Sample</a>
+        <a class="btn btn-secondary" data-open-inquiry href="#">Get Fabric Quotation</a>
       </div>
       <div class="swatch-strip">
         <div class="swatch"><div class="swatch-chip"><img src="assets/dyed-microfiber-fabric.jpg" alt="Dyed microfiber fabric"></div><div class="swatch-label">Dyed</div></div>
@@ -315,7 +315,7 @@
         <div class="card-body">
           <h3>Dyed Microfiber Fabric</h3>
           <p>Solid-color polyester microfiber fabric for sheets, duvet covers and bulk bedding production, with consistent dye-lot color matching.</p>
-          <span class="card-link">Request Details →</span>
+          <a class="card-link" href="#">Request Details →</a>
         </div>
       </div>
       <div class="card">
@@ -323,7 +323,7 @@
         <div class="card-body">
           <h3>Printed Microfiber Fabric</h3>
           <p>Custom-printed polyester microfiber fabric, including disperse and digital printing, for bedding brands developing market-specific designs.</p>
-          <span class="card-link">Request Details →</span>
+          <a class="card-link" href="#">Request Details →</a>
         </div>
       </div>
       <div class="card">
@@ -331,7 +331,7 @@
         <div class="card-body">
           <h3>Peach Skin Fabric</h3>
           <p>Brushed, peach-skin-finish microfiber fabric with a soft hand feel, suited to mid-to-premium bedding and home textile lines.</p>
-          <span class="card-link">Request Details →</span>
+          <a class="card-link" href="#">Request Details →</a>
         </div>
       </div>
       <div class="card">
@@ -339,7 +339,7 @@
         <div class="card-body">
           <h3>Embossed Microfiber Fabric</h3>
           <p>Textured, embossed polyester microfiber fabric for decorative bedding collections and value-added product lines.</p>
-          <span class="card-link">Request Details →</span>
+          <a class="card-link" href="#">Request Details →</a>
         </div>
       </div>
       <div class="card">
@@ -347,7 +347,7 @@
         <div class="card-body">
           <h3>Jacquard Microfiber Fabric</h3>
           <p>Woven-pattern jacquard microfiber fabric for differentiated, design-led bedding fabric programs.</p>
-          <span class="card-link">Request Details →</span>
+          <a class="card-link" href="#">Request Details →</a>
         </div>
       </div>
       <div class="card">
@@ -355,7 +355,7 @@
         <div class="card-body">
           <h3>Ultrasonic &amp; Quilted Fabric</h3>
           <p>Bonded and quilted microfiber fabric for comforters, mattress covers and padded bedding components.</p>
-          <span class="card-link">Request Details →</span>
+          <a class="card-link" href="#">Request Details →</a>
         </div>
       </div>
     </div>
@@ -505,7 +505,7 @@
       <div>
         <h2>Tell Us Your Bedding Fabric Requirements</h2>
         <p>Send us your fabric type, GSM, width, color, design, target market and order quantity. Our team will recommend suitable polyester microfiber bedding fabric options for your production or sourcing plan.</p>
-        <a class="btn btn-primary">Send Your Fabric Requirement</a>
+        <a class="btn btn-primary" data-open-inquiry href="#">Send Your Fabric Requirement</a>
       </div>
       <div class="form-card">
         <div><span class="field-label">Fabric Type</span><div class="field-box"></div></div>
@@ -527,5 +527,26 @@
   <div class="copy">© 2026 Perfectextile. Polyester Microfiber Bedding Fabric Manufacturer.</div>
 </footer>
 
+
+<script>
+  // 弹窗仅绑定这3个按钮：Hero的 Request Fabric Sample / Get Fabric Quotation，
+  // 以及底部的 Send Your Fabric Requirement。
+  // 6个产品卡片的「Request Details →」暂时是普通链接（href="#"），
+  // 待Dyed/Printed等子类目页面上线后，再替换成各自页面的真实URL。
+  // 该弹窗模板已设置 Display Condition = Entire Site，会自动随站点全局加载，这里只需调用官方JS接口触发显示
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-open-inquiry]');
+    if (!trigger) return;
+    e.preventDefault();
+
+    if (window.elementorProFrontend && elementorProFrontend.modules && elementorProFrontend.modules.popup) {
+      elementorProFrontend.modules.popup.showPopup({ id: 29661 });
+    } else {
+      // 兼容兜底：如果Elementor Pro前端脚本还没加载完成（极少数情况），跳转到联系方式锚点
+      console.warn('Elementor popup module not ready yet — falling back to #contact');
+      window.location.hash = '#contact';
+    }
+  });
+</script>
 </body>
 </html>
